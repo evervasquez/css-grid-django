@@ -1,0 +1,6 @@
+.idea/
+media/*
+__pycache__/
+negosy/settings/local.py
+negosy/db.sqlite3
+db.sqlite3

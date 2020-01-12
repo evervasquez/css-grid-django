@@ -1,0 +1,34 @@
+body {
+    font-family: Roboto, sans-serif;
+}
+
+.container {
+    display: grid;
+    grid-template: 60px 1fr 50px / 200px 1fr;
+    gap: 10px;
+    height: 100vh;
+    grid-template-areas: "header header"
+                         "left content"
+                         "footer footer";
+}
+
+.item{
+    border: 1px solid red;
+    background: lightblue;
+}
+
+.header{
+    grid-area: header;
+}
+
+.left{
+    grid-area: left;
+}
+
+.content{
+    grid-area: content;
+}
+
+.footer{
+    grid-area: footer;
+}
