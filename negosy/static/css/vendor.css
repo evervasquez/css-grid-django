@@ -4,31 +4,24 @@ body {
 
 .container {
     display: grid;
-    grid-template: 60px 1fr 50px / 200px 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
     gap: 10px;
     height: 100vh;
-    grid-template-areas: "header header"
-                         "left content"
-                         "footer footer";
 }
 
 .item{
-    border: 1px solid red;
     background: lightblue;
+    padding: 10px;
+    border: 1px solid red;
 }
 
-.header{
-    grid-area: header;
+.item:nth-of-type(1){
+    background: blue;
+    grid-column-start: 1;
+    grid-column-end: 3;
 }
 
-.left{
-    grid-area: left;
-}
-
-.content{
-    grid-area: content;
-}
-
-.footer{
-    grid-area: footer;
+.item:nth-of-type(8){
+    grid-column: 2/8;
 }
