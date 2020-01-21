@@ -1,0 +1,120 @@
+main {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: [sidebar-start] 65px [sidebar-end contenido-start] 2fr [contenido-end];
+    grid-template-rows: [header-start] 55px [header-end contenido-start] 2fr;
+}
+
+main > * {
+    font-family: sans-serif;
+    background-color: goldenrod;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+}
+
+aside {
+    background-color: #091e42;
+    grid-row: header-start / footer-end;
+}
+
+header {
+    background: #fff;
+    grid-column: sidebar-end / contenido-end;
+    border-bottom: 1px solid rgba(9, 30, 66, .12);
+}
+
+footer {
+    background: #fff;
+    grid-column: contenido-start / contenido-end;
+    border-top: 1px solid rgba(9, 30, 66, .12);
+}
+
+section {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    grid-template-rows: 1fr;
+    width: 100%;
+    height: 100%;
+    background-color: #f4f5f7;
+}
+
+.sub-nav {
+    height: 100%;
+}
+
+.nav-left {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(16, 1fr);
+    height: 100vh;
+    justify-items: center;
+    align-items: center;
+}
+
+.nav-left-item {
+    font-size: 16px;
+    color: #9ca4b3;
+    cursor: pointer;
+    padding: 5px 8px;
+    border-radius: 5px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 1fr;
+    height: 100%;
+}
+
+.grid-actions {
+    border: 1px solid red;
+}
+
+.grid-content {
+    border: 1px solid red;
+}
+
+.active, .nav-left-item:hover {
+    background-color: #0078AA;
+    color: white;
+}
+
+/*region BEGIN TOOLTIP*/
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgba(9, 30, 66, .87);
+    color: #fff;
+    font-size: 13px;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 5px;
+    left: 110%;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -8px;
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent rgba(9, 30, 66, .87) transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+/*endregion*/
