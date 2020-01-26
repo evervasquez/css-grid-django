@@ -1,0 +1,10 @@
+@import "../variables/colors";
+
+.table {
+  line-height: 2em !important;
+}
+
+table thead tr:first-child {
+  line-height: 2.4em;
+  //background: $color-sub-nav-hover;
+}

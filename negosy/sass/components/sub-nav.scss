@@ -1,0 +1,25 @@
+@import "../variables/colors";
+
+.sub-nav {
+  display: inline-grid;
+  background-color: $color-background;
+  border-right: 1px solid $color-border;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(8, 44px);
+  row-gap: 5px;
+}
+
+.sub-nav-item {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  cursor: pointer;
+  margin: 0 10px;
+  padding: 1em;
+}
+
+.active-sub, .sub-nav-item:hover {
+  background-color: $color-sub-nav-hover;
+  font-weight: bold;
+  border-radius: 5px;
+}

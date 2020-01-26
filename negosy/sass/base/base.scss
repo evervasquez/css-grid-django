@@ -1,0 +1,43 @@
+@import "../variables/colors";
+
+*, *:before, *:after {
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+  font-size: 13px !important;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Fira Sans, Droid Sans, Cantarell, sans-serif;
+  color: rgba(9, 30, 66, .87);
+}
+
+main {
+  display: grid;
+  grid-template-columns: [aside-start] 55px [aside-end sub-nav-start] 180px [sub-nav-end content-column-start] 1fr [content-column-end];
+  grid-template-rows: [header-start] 55px [header-end content-row-start] calc(100vh - 55px) [content-row-end];
+}
+
+header {
+  background: $color-white;
+  border-bottom: 1px solid $color-border;
+  grid-column: aside-end / content-column-end;
+  align-self: center;
+}
+
+aside {
+  background-color: $color-blue-dark;
+  grid-row: header-start / content-row-end;
+}
+
+.content {
+  grid-column: sub-nav-end / content-column-end;
+  padding: 10px;
+  overflow: auto;
+  width: 100%;
+  background-color: $color-background;
+}

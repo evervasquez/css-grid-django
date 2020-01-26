@@ -4,283 +4,58 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Negosy{% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="{% static "css/bulma-0.8.0/css/bulma.min.css" %}"/>
-    <!--<link rel="stylesheet" type="text/css" href="{% static "css/vendor.css" %}"/> -->
+    <link rel="stylesheet" type="text/css" href="{% static "css/negosy.css" %}"/>
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-    <style>
-        * {
-            box-sizing: border-box;
-            padding: 0;
-            margin: 0;
-            font-size: 13px !important;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Fira Sans, Droid Sans, Cantarell, sans-serif;
-            color: rgba(9, 30, 66, .87);
-        }
-
-        main {
-            display: grid;
-            grid-template-columns: [aside-start] 55px [aside-end sub-nav-start] 180px [sub-nav-end content-column-start] 1fr [content-column-end];
-            grid-template-rows: [header-start] 55px [header-end content-row-start] calc(100vh - 55px) [content-row-end];
-        }
-
-        header {
-            background: #fff;
-            border-bottom: 1px solid rgba(9, 30, 66, .12);
-            grid-column: aside-end / content-column-end;
-        }
-
-        aside {
-            background-color: #091e42;
-            grid-row: header-start / content-row-end;
-        }
-
-        .sub-nav {
-            display: inline-grid;
-            background-color: #f4f5f7;
-            border-right: 1px solid rgba(9, 30, 66, .12);
-            grid-template-columns: 1fr;
-            grid-template-rows: repeat(8, 44px);
-            row-gap: 5px;
-        }
-
-        .content {
-            grid-column: sub-nav-end / content-column-end;
-            padding: 10px;
-            overflow: auto;
-            background-color: #f4f5f7;
-        }
-
-        .sidebar {
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-template-rows: repeat(16, 1fr);
-            justify-items: center;
-            align-items: center;
-            height: 100vh;
-            width: 100%;
-        }
-
-        .sidebar-item {
-            font-size: 1.5em;
-            color: #9ca4b3;
-            cursor: pointer;
-            padding: 12%;
-            border-radius: 5px;
-        }
-
-        .active, .sidebar-item:hover {
-            background-color: #0078AA;
-            color: white;
-        }
-
-        /*region NAV*/
-        .nav-main {
-            display: grid;
-            grid-template-columns: repeat(60, 1fr);
-            grid-template-rows: 1fr;
-            width: 100%;
-            height: 100%;
-        }
-
-        .nav-title {
-            grid-column: 2/6;
-            grid-row: 1;
-            justify-self: left;
-            align-self: center;
-            font-size: 1.4em !important;
-        }
-
-        .nav-profile {
-            grid-column: 53 / 61;
-            grid-row: 1;
-            place-self: center;
-        }
-
-        .nav-notification {
-            grid-column: 50 / 54;
-            grid-row: 1;
-            place-self: center;
-        }
-
-        .nav-suggestion {
-            grid-column: 49 / 51;
-            grid-row: 1;
-            place-self: center;
-        }
-
-        .nav-config {
-            grid-column: 40 / 48;
-            grid-row: 1;
-            place-self: center;
-        }
-
-        .nav-search {
-            grid-column: 26 / 39;
-            grid-row: 1;
-            align-self: center;
-        }
-
-        /*endregion*/
-
-        /*region SUB-NAV*/
-        .sub-nav-item {
-            display: flex;
-            justify-content: left;
-            align-items: center;
-            cursor: pointer;
-            margin: 0 10px;
-            padding: 1em;
-        }
-
-        .active-sub, .sub-nav-item:hover {
-            background-color: #eaebf0;
-            font-weight: bold;
-            border-radius: 5px;
-        }
-
-        /*endregion*/
-
-        .grid {
-            display: grid;
-            padding: 10px;
-            grid-template-columns: 1fr;
-            grid-template-rows: 50px 1fr;
-            width: 100%;
-            gap: 10px;
-            height: 100%;
-            max-width: 1366px;
-            justify-self: center;
-        }
-
-        .search-negosy:focus {
-            border: 1px solid #00bdaa;
-            outline: none;
-            box-shadow: none;
-        }
-
-        /*region GRID ACTIONS */
-        .grid-actions {
-            display: grid;
-            grid-template-columns: repeat(30, 1fr);
-            grid-template-rows: 1fr;
-            grid-template-areas: "search btn new_btn";
-            width: 100%;
-            height: 100%;
-            align-items: center;
-        }
-
-        .search {
-            grid-column: 1 / 14;
-            grid-row: 1;
-        }
-
-        .btn-inventory {
-            grid-column: 14 / 19;
-            grid-row: 1;
-            justify-self: center;
-        }
-
-        .btn-category {
-            grid-column: 19 / 24;
-            grid-row: 1;
-            justify-self: center;
-        }
-
-        .btn-actions {
-            grid-column: 24 / 27;
-            grid-row: 1;
-            justify-self: center;
-        }
-
-        .new-btn {
-            grid-column: 27 / 31;
-            grid-row: 1;
-            justify-self: end;
-        }
-
-        /*endregion*/
-
-        /*region BEGIN TOOLTIP*/
-        .tooltip {
-            position: relative;
-            display: inline-block;
-        }
-
-        .tooltip .tooltiptext {
-            visibility: hidden;
-            width: 120px;
-            background-color: rgba(9, 30, 66, .87);
-            color: #fff;
-            font-size: 13px;
-            text-align: center;
-            border-radius: 6px;
-            padding: 5px 0;
-            position: absolute;
-            z-index: 1;
-            top: 5px;
-            left: 110%;
-        }
-
-        .tooltip .tooltiptext::after {
-            content: "";
-            position: absolute;
-            top: 50%;
-            right: 100%;
-            margin-top: -8px;
-            border-width: 8px;
-            border-style: solid;
-            border-color: transparent rgba(9, 30, 66, .87) transparent transparent;
-        }
-
-        .tooltip:hover .tooltiptext {
-            visibility: visible;
-        }
-
-        /*endregion*/
-    </style>
 </head>
 <body>
 <main>
     <header>
         <div class="nav-main">
-            <div class="nav-main-item nav-title">
+            <div class="nav-title">
                 Inventario
             </div>
-            <div class="nav-main-item nav-search">
-                <input class="input is-rounded search-negosy" type="text" placeholder="Buscar en negosy...">
-            </div>
-            <div class="nav-main-item nav-config">
-                <button class="button is-success" style="font-weight: bold; background-color: #00beaa">Guía de
-                    configuración
-                </button>
-            </div>
-            <div class="nav-main-item nav-suggestion">
-                <a class="navbar-item nav-tag">
+            <div class="nav-actions">
+                <div class="nav-main-item nav-search">
+                    <input class="input is-rounded search-platform" type="text" placeholder="Buscar en negosy...">
+                </div>
+                <div class="nav-main-item nav-config">
+                    <button class="button is-success has-text-weight-bold">Guía de
+                        configuración
+                    </button>
+                </div>
+                <div class="nav-main-item nav-suggestion">
+                    <a class="navbar-item nav-tag">
                     <span class="icon">
                         <i class="fas fa-bullhorn plus-2"></i>
                     </span>
-                </a>
-            </div>
-            <div class="nav-main-item nav-notification">
-                <a class="navbar-item nav-tag">
+                    </a>
+                </div>
+                <div class="nav-main-item nav-notification">
+                    <a class="navbar-item nav-tag">
                     <span class="icon">
                         <i class="far fa-bell plus-2"></i>
                     </span>
-                </a>
-            </div>
-            <div class="nav-main-item nav-profile">
-                <div class="navbar-item has-dropdown is-hoverable"><a class="navbar-link">
-                    <figure class="image" style="margin-right:.5em">
-                        <img src="https://avatars1.githubusercontent.com/u/7221389?v=4&amp;s=32">
-                    </figure>
-                    Ever Vasquez</a>
-                    <div class="navbar-dropdown is-right"><a class="navbar-item">
-                        Configuración</a>
-                        <hr class="navbar-divider">
-                        <a class="navbar-item">Cerrar sesión</a></div>
+                    </a>
+                </div>
+                <div class="nav-main-item nav-profile navbar" role="navigation" aria-label="dropdown navigation">
+                    <div class="navbar-item has-dropdown is-mobile is-hoverable">
+                        <a class="navbar-link">
+                            Ever Vásquez
+                        </a>
+
+                        <div class="navbar-dropdown">
+                            <a class="navbar-item">
+                                Mi cuenta
+                            </a>
+                            <a class="navbar-item">
+                                Configuración
+                            </a>
+                            <hr class="navbar-divider">
+                            <div class="navbar-item">
+                                Cerrar sesión
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -359,8 +134,8 @@
                             <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
                                 <span>Todo el inventario</span>
                                 <span class="icon is-small">
-                                        <i class="fas fa-angle-down" aria-hidden="true"></i>
-                                    </span>
+                                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                </span>
                             </button>
                         </div>
                         <div class="dropdown-menu" id="dropdown-menu3" role="menu">
@@ -481,343 +256,247 @@
                 </div>
             </div>
             <div class="grid-content">
-                <table class="table">
+                <table class="table is-hoverable is-fullwidth">
                     <thead>
                     <tr>
-                        <th><abbr title="Position">Pos</abbr></th>
-                        <th>Team</th>
-                        <th><abbr title="Played">Pld</abbr></th>
-                        <th><abbr title="Won">W</abbr></th>
-                        <th><abbr title="Drawn">D</abbr></th>
-                        <th><abbr title="Lost">L</abbr></th>
-                        <th><abbr title="Goals for">GF</abbr></th>
-                        <th><abbr title="Goals against">GA</abbr></th>
-                        <th><abbr title="Goal difference">GD</abbr></th>
-                        <th><abbr title="Points">Pts</abbr></th>
-                        <th>Qualification or relegation</th>
+                        <th>
+                            <label class="checkbox">
+                                <input type="checkbox">
+                            </label>
+                        </th>
+                        <th>Producto</th>
+                        <th>Categoría</th>
+                        <th class="has-text-right">Precio de venta</th>
+                        <th class="has-text-right">Precio de compra</th>
+                        <th class="has-text-right">Stock</th>
                     </tr>
                     </thead>
-                    <tfoot>
-                    <tr>
-                        <th><abbr title="Position">Pos</abbr></th>
-                        <th>Team</th>
-                        <th><abbr title="Played">Pld</abbr></th>
-                        <th><abbr title="Won">W</abbr></th>
-                        <th><abbr title="Drawn">D</abbr></th>
-                        <th><abbr title="Lost">L</abbr></th>
-                        <th><abbr title="Goals for">GF</abbr></th>
-                        <th><abbr title="Goals against">GA</abbr></th>
-                        <th><abbr title="Goal difference">GD</abbr></th>
-                        <th><abbr title="Points">Pts</abbr></th>
-                        <th>Qualification or relegation</th>
-                    </tr>
-                    </tfoot>
                     <tbody>
                     <tr>
-                        <th>1</th>
-                        <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C." title="Leicester City F.C.">Leicester
-                            City</a> <strong>(C)</strong>
+                        <th>
+                            <label class="checkbox">
+                                <input type="checkbox">
+                            </label>
+                        </th>
+                        <td style="width: 45%">
+                            <a href="https://en.wikipedia.org/wiki/Leicester_City_F.C."
+                               title="JOLLY LOGAN OVEJA VESTIDA DE LOBO 25 CM SENTADA">JOLLY LOGAN OVEJA VESTIDA DE LOBO
+                                25 CM SENTADA</a>
                         </td>
-                        <td>38</td>
-                        <td>23</td>
-                        <td>12</td>
-                        <td>3</td>
-                        <td>68</td>
-                        <td>36</td>
-                        <td>+32</td>
-                        <td>81</td>
-                        <td>Qualification for the <a
-                                href="https://en.wikipedia.org/wiki/2016%E2%80%9317_UEFA_Champions_League#Group_stage"
-                                title="2016–17 UEFA Champions League">Champions League group stage</a></td>
+                        <td></td>
+                        <td class="has-text-right">S/ 45.00</td>
+                        <td class="has-text-right">S/ 00.00</td>
+                        <td class="has-text-right">00.00</td>
                     </tr>
                     <tr>
-                        <th>2</th>
-                        <td><a href="https://en.wikipedia.org/wiki/Arsenal_F.C." title="Arsenal F.C.">Arsenal</a></td>
-                        <td>38</td>
-                        <td>20</td>
-                        <td>11</td>
-                        <td>7</td>
-                        <td>65</td>
-                        <td>36</td>
-                        <td>+29</td>
-                        <td>71</td>
-                        <td>Qualification for the <a
-                                href="https://en.wikipedia.org/wiki/2016%E2%80%9317_UEFA_Champions_League#Group_stage"
-                                title="2016–17 UEFA Champions League">Champions League group stage</a></td>
-                    </tr>
-                    <tr>
-                        <th>3</th>
-                        <td><a href="https://en.wikipedia.org/wiki/Tottenham_Hotspur_F.C."
-                               title="Tottenham Hotspur F.C.">Tottenham Hotspur</a></td>
-                        <td>38</td>
-                        <td>19</td>
-                        <td>13</td>
-                        <td>6</td>
-                        <td>69</td>
-                        <td>35</td>
-                        <td>+34</td>
-                        <td>70</td>
-                        <td>Qualification for the <a
-                                href="https://en.wikipedia.org/wiki/2016%E2%80%9317_UEFA_Champions_League#Group_stage"
-                                title="2016–17 UEFA Champions League">Champions League group stage</a></td>
-                    </tr>
-                    <tr class="is-selected">
-                        <th>4</th>
-                        <td><a href="https://en.wikipedia.org/wiki/Manchester_City_F.C." title="Manchester City F.C.">Manchester
-                            City</a></td>
-                        <td>38</td>
-                        <td>19</td>
-                        <td>9</td>
-                        <td>10</td>
-                        <td>71</td>
-                        <td>41</td>
-                        <td>+30</td>
-                        <td>66</td>
-                        <td>Qualification for the <a
-                                href="https://en.wikipedia.org/wiki/2016%E2%80%9317_UEFA_Champions_League#Play-off_round"
-                                title="2016–17 UEFA Champions League">Champions League play-off round</a></td>
-                    </tr>
-                    <tr>
-                        <th>5</th>
-                        <td><a href="https://en.wikipedia.org/wiki/Manchester_United_F.C."
-                               title="Manchester United F.C.">Manchester United</a></td>
-                        <td>38</td>
-                        <td>19</td>
-                        <td>9</td>
-                        <td>10</td>
-                        <td>49</td>
-                        <td>35</td>
-                        <td>+14</td>
-                        <td>66</td>
-                        <td>Qualification for the <a
-                                href="https://en.wikipedia.org/wiki/2016%E2%80%9317_UEFA_Europa_League#Group_stage"
-                                title="2016–17 UEFA Europa League">Europa League group stage</a></td>
-                    </tr>
-                    <tr>
-                        <th>6</th>
-                        <td><a href="https://en.wikipedia.org/wiki/Southampton_F.C." title="Southampton F.C.">Southampton</a>
+                        <th>
+                            <label class="checkbox">
+                                <input type="checkbox">
+                            </label>
+                        </th>
+                        <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C."
+                               title="PAR DE MEDIAS 50256">PAR DE MEDIAS 50256</a>
                         </td>
-                        <td>38</td>
-                        <td>18</td>
-                        <td>9</td>
-                        <td>11</td>
-                        <td>59</td>
-                        <td>41</td>
-                        <td>+18</td>
-                        <td>63</td>
-                        <td>Qualification for the <a
-                                href="https://en.wikipedia.org/wiki/2016%E2%80%9317_UEFA_Europa_League#Group_stage"
-                                title="2016–17 UEFA Europa League">Europa League group stage</a></td>
+                        <td></td>
+                        <td class="has-text-right">S/ 12.00</td>
+                        <td class="has-text-right">S/ 00.00</td>
+                        <td class="has-text-right">00.00</td>
                     </tr>
                     <tr>
-                        <th>7</th>
-                        <td><a href="https://en.wikipedia.org/wiki/West_Ham_United_F.C." title="West Ham United F.C.">West
-                            Ham United</a></td>
-                        <td>38</td>
-                        <td>16</td>
-                        <td>14</td>
-                        <td>8</td>
-                        <td>65</td>
-                        <td>51</td>
-                        <td>+14</td>
-                        <td>62</td>
-                        <td>Qualification for the <a
-                                href="https://en.wikipedia.org/wiki/2016%E2%80%9317_UEFA_Europa_League#Third_qualifying_round"
-                                title="2016–17 UEFA Europa League">Europa League third qualifying round</a></td>
-                    </tr>
-                    <tr>
-                        <th>8</th>
-                        <td><a href="https://en.wikipedia.org/wiki/Liverpool_F.C." title="Liverpool F.C.">Liverpool</a>
+                        <th>
+                            <label class="checkbox">
+                                <input type="checkbox">
+                            </label>
+                        </th>
+                        <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C."
+                               title="TAZA CON PLATA DE MADERA Y CUCHARA AMOR - 50148">TAZA CON PLATA DE MADERA Y
+                            CUCHARA AMOR - 50148</a>
                         </td>
-                        <td>38</td>
-                        <td>16</td>
-                        <td>12</td>
-                        <td>10</td>
-                        <td>63</td>
-                        <td>50</td>
-                        <td>+13</td>
-                        <td>60</td>
                         <td></td>
+                        <td class="has-text-right">S/ 19.00</td>
+                        <td class="has-text-right">S/ 00.00</td>
+                        <td class="has-text-right">12.00</td>
                     </tr>
                     <tr>
-                        <th>9</th>
-                        <td><a href="https://en.wikipedia.org/wiki/Stoke_City_F.C." title="Stoke City F.C.">Stoke
-                            City</a></td>
-                        <td>38</td>
-                        <td>14</td>
-                        <td>9</td>
-                        <td>15</td>
-                        <td>41</td>
-                        <td>55</td>
-                        <td>−14</td>
-                        <td>51</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th>10</th>
-                        <td><a href="https://en.wikipedia.org/wiki/Chelsea_F.C." title="Chelsea F.C.">Chelsea</a></td>
-                        <td>38</td>
-                        <td>12</td>
-                        <td>14</td>
-                        <td>12</td>
-                        <td>59</td>
-                        <td>53</td>
-                        <td>+6</td>
-                        <td>50</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th>11</th>
-                        <td><a href="https://en.wikipedia.org/wiki/Everton_F.C." title="Everton F.C.">Everton</a></td>
-                        <td>38</td>
-                        <td>11</td>
-                        <td>14</td>
-                        <td>13</td>
-                        <td>59</td>
-                        <td>55</td>
-                        <td>+4</td>
-                        <td>47</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th>12</th>
-                        <td><a href="https://en.wikipedia.org/wiki/Swansea_City_A.F.C." title="Swansea City A.F.C.">Swansea
-                            City</a></td>
-                        <td>38</td>
-                        <td>12</td>
-                        <td>11</td>
-                        <td>15</td>
-                        <td>42</td>
-                        <td>52</td>
-                        <td>−10</td>
-                        <td>47</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th>13</th>
-                        <td><a href="https://en.wikipedia.org/wiki/Watford_F.C." title="Watford F.C.">Watford</a></td>
-                        <td>38</td>
-                        <td>12</td>
-                        <td>9</td>
-                        <td>17</td>
-                        <td>40</td>
-                        <td>50</td>
-                        <td>−10</td>
-                        <td>45</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th>14</th>
-                        <td><a href="https://en.wikipedia.org/wiki/West_Bromwich_Albion_F.C."
-                               title="West Bromwich Albion F.C.">West Bromwich Albion</a></td>
-                        <td>38</td>
-                        <td>10</td>
-                        <td>13</td>
-                        <td>15</td>
-                        <td>34</td>
-                        <td>48</td>
-                        <td>−14</td>
-                        <td>43</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th>15</th>
-                        <td><a href="https://en.wikipedia.org/wiki/Crystal_Palace_F.C." title="Crystal Palace F.C.">Crystal
-                            Palace</a></td>
-                        <td>38</td>
-                        <td>11</td>
-                        <td>9</td>
-                        <td>18</td>
-                        <td>39</td>
-                        <td>51</td>
-                        <td>−12</td>
-                        <td>42</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th>16</th>
-                        <td><a href="https://en.wikipedia.org/wiki/A.F.C._Bournemouth" title="A.F.C. Bournemouth">AFC
-                            Bournemouth</a></td>
-                        <td>38</td>
-                        <td>11</td>
-                        <td>9</td>
-                        <td>18</td>
-                        <td>45</td>
-                        <td>67</td>
-                        <td>−22</td>
-                        <td>42</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th>17</th>
-                        <td><a href="https://en.wikipedia.org/wiki/Sunderland_A.F.C." title="Sunderland A.F.C.">Sunderland</a>
+                        <th>
+                            <label class="checkbox">
+                                <input type="checkbox">
+                            </label>
+                        </th>
+                        <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C."
+                               title="FUNKO POP 20 DEADPOOL">FUNKO POP 20 DEADPOOL</a>
                         </td>
-                        <td>38</td>
-                        <td>9</td>
-                        <td>12</td>
-                        <td>17</td>
-                        <td>48</td>
-                        <td>62</td>
-                        <td>−14</td>
-                        <td>39</td>
                         <td></td>
+                        <td class="has-text-right">S/ 65.00</td>
+                        <td class="has-text-right">S/ 00.00</td>
+                        <td class="has-text-right">00.00</td>
                     </tr>
                     <tr>
-                        <th>18</th>
-                        <td><a href="https://en.wikipedia.org/wiki/Newcastle_United_F.C." title="Newcastle United F.C.">Newcastle
-                            United</a> <strong>(R)</strong>
+                        <th>
+                            <label class="checkbox">
+                                <input type="checkbox">
+                            </label>
+                        </th>
+                        <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C."
+                               title="PULSERA NEGRA GEO 18237">PULSERA NEGRA GEO 18237</a>
                         </td>
-                        <td>38</td>
-                        <td>9</td>
-                        <td>10</td>
-                        <td>19</td>
-                        <td>44</td>
-                        <td>65</td>
-                        <td>−21</td>
-                        <td>37</td>
-                        <td>Relegation to the <a
-                                href="https://en.wikipedia.org/wiki/2016%E2%80%9317_Football_League_Championship"
-                                title="2016–17 Football League Championship">Football League Championship</a></td>
+                        <td></td>
+                        <td class="has-text-right">S/ 17.00</td>
+                        <td class="has-text-right">S/ 00.00</td>
+                        <td class="has-text-right">00.00</td>
                     </tr>
                     <tr>
-                        <th>19</th>
-                        <td><a href="https://en.wikipedia.org/wiki/Norwich_City_F.C." title="Norwich City F.C.">Norwich
-                            City</a> <strong>(R)</strong>
+                        <th>
+                            <label class="checkbox">
+                                <input type="checkbox">
+                            </label>
+                        </th>
+                        <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C."
+                               title="LLAVERO BTS METAL 50250">LLAVERO BTS METAL 50250</a>
                         </td>
-                        <td>38</td>
-                        <td>9</td>
-                        <td>7</td>
-                        <td>22</td>
-                        <td>39</td>
-                        <td>67</td>
-                        <td>−28</td>
-                        <td>34</td>
-                        <td>Relegation to the <a
-                                href="https://en.wikipedia.org/wiki/2016%E2%80%9317_Football_League_Championship"
-                                title="2016–17 Football League Championship">Football League Championship</a></td>
+                        <td></td>
+                        <td class="has-text-right">S/ 10.00</td>
+                        <td class="has-text-right">S/ 00.00</td>
+                        <td class="has-text-right">00.00</td>
                     </tr>
                     <tr>
-                        <th>20</th>
-                        <td><a href="https://en.wikipedia.org/wiki/Aston_Villa_F.C." title="Aston Villa F.C.">Aston
-                            Villa</a> <strong>(R)</strong>
+                        <th>
+                            <label class="checkbox">
+                                <input type="checkbox">
+                            </label>
+                        </th>
+                        <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C."
+                               title="CAJA ARMABLE NAVIDEÑA">CAJA ARMABLE NAVIDEÑA</a>
                         </td>
-                        <td>38</td>
-                        <td>3</td>
-                        <td>8</td>
-                        <td>27</td>
-                        <td>27</td>
-                        <td>76</td>
-                        <td>−49</td>
-                        <td>17</td>
-                        <td>Relegation to the <a
-                                href="https://en.wikipedia.org/wiki/2016%E2%80%9317_Football_League_Championship"
-                                title="2016–17 Football League Championship">Football League Championship</a></td>
+                        <td></td>
+                        <td class="has-text-right">S/ 4.00</td>
+                        <td class="has-text-right">S/ 00.00</td>
+                        <td class="has-text-right">00.00</td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label class="checkbox">
+                                <input type="checkbox">
+                            </label>
+                        </th>
+                        <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C."
+                               title="GRANUTS ARANDANOS">GRANUTS ARANDANOS</a>
+                        </td>
+                        <td></td>
+                        <td class="has-text-right">S/ 4.50</td>
+                        <td class="has-text-right">S/ 00.00</td>
+                        <td class="has-text-right">00.00</td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label class="checkbox">
+                                <input type="checkbox">
+                            </label>
+                        </th>
+                        <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C."
+                               title="BOLA NAVIDEÑA">BOLA NAVIDEÑA</a>
+                        </td>
+                        <td></td>
+                        <td class="has-text-right">S/ 5.00</td>
+                        <td class="has-text-right">S/ 00.00</td>
+                        <td class="has-text-right">00.00</td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label class="checkbox">
+                                <input type="checkbox">
+                            </label>
+                        </th>
+                        <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C."
+                               title="MINI OREO GALLETA">MINI OREO GALLETA</a>
+                        </td>
+                        <td></td>
+                        <td class="has-text-right">S/ 2.00</td>
+                        <td class="has-text-right">S/ 00.00</td>
+                        <td class="has-text-right">00.00</td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label class="checkbox">
+                                <input type="checkbox">
+                            </label>
+                        </th>
+                        <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C."
+                               title="PORTAFOTO LUNAMÍA CUMPLEAÑOS MODELOS VARIOS">PORTAFOTO LUNAMÍA CUMPLEAÑOS MODELOS
+                            VARIOS</a>
+                        </td>
+                        <td></td>
+                        <td class="has-text-right" style="width: 15%">S/ 38.00</td>
+                        <td class="has-text-right" style="width: 15%">S/ 00.00</td>
+                        <td class="has-text-right" style="width: 10%">00.00</td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label class="checkbox">
+                                <input type="checkbox">
+                            </label>
+                        </th>
+                        <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C."
+                               title="TAZA HAPPY BIRTHDAY OSA - LUNA MIA">TAZA HAPPY BIRTHDAY OSA - LUNA MIA</a>
+                        </td>
+                        <td></td>
+                        <td class="has-text-right">S/ 25.00</td>
+                        <td class="has-text-right">S/ 00.00</td>
+                        <td class="has-text-right">00.00</td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label class="checkbox">
+                                <input type="checkbox">
+                            </label>
+                        </th>
+                        <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C."
+                               title="TOFFEES DE CHOCOLATE">TOFFEES DE CHOCOLATE</a>
+                        </td>
+                        <td></td>
+                        <td class="has-text-right">S/ 13.00</td>
+                        <td class="has-text-right">S/ 00.00</td>
+                        <td class="has-text-right">00.00</td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label class="checkbox">
+                                <input type="checkbox">
+                            </label>
+                        </th>
+                        <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C."
+                               title="TOFFEES DE CHOCOLATE">TOFFEES DE CHOCOLATE</a>
+                        </td>
+                        <td></td>
+                        <td class="has-text-right">S/ 13.00</td>
+                        <td class="has-text-right">S/ 00.00</td>
+                        <td class="has-text-right">00.00</td>
                     </tr>
                     </tbody>
                 </table>
             </div>
+            <div class="grid-paginator">
+                <nav class="pagination is-small" role="navigation" aria-label="pagination">
+                    <!--<a class="pagination-previous">Previous</a>
+                    <a class="pagination-next">Next page</a> -->
+                    <ul class="pagination-list">
+                        <li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
+                        <li><span class="pagination-ellipsis">&hellip;</span></li>
+                        <li><a class="pagination-link" aria-label="Goto page 5">5</a></li>
+                        <li><a class="pagination-link is-current" aria-label="Page 6" aria-current="page">6</a></li>
+                        <li><a class="pagination-link" aria-label="Goto page 7">7</a></li>
+                        <li><span class="pagination-ellipsis">&hellip;</span></li>
+                        <li><a class="pagination-link" aria-label="Goto page 15">15</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="help-me">
+            <i class="far fa-question-circle" style="font-size: 16px !important;color: #00c4a7"></i> Aprende más acerca
+            de <a href=""> productos</a>
         </div>
     </div>
+
 </main>
 </body>
 </html>
