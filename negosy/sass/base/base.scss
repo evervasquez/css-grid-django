@@ -19,14 +19,16 @@ body {
 main {
   display: grid;
   grid-template-columns: [aside-start] 55px [aside-end sub-nav-start] 180px [sub-nav-end content-column-start] 1fr [content-column-end];
-  grid-template-rows: [header-start] 55px [header-end content-row-start] calc(100vh - 55px) [content-row-end];
+  grid-template-rows: [header-start] 55px [header-end content-row-start] 1fr [content-row-end];
+  width: 100vw;
+  height: calc(100vh - 56px);
+  //height: 100vh;
 }
 
 header {
   background: $color-white;
   border-bottom: 1px solid $color-border;
   grid-column: aside-end / content-column-end;
-  align-self: center;
 }
 
 aside {
@@ -40,4 +42,27 @@ aside {
   overflow: auto;
   width: 100%;
   background-color: $color-background;
+}
+
+
+@media (min-width: 481px) and (max-width: 767px) {
+  main {
+    display: grid;
+    grid-template-columns: [aside-start] 55px [content-column-start] 1fr [content-column-end];
+    grid-template-rows: [header-start] 55px [header-end content-row-start] calc(100vh - 55px) [content-row-end];
+    height: 100vh;
+  }
+
+}
+
+
+@media (min-width: 320px) and (max-width: 480px) {
+
+  main {
+    display: grid;
+    grid-template-columns: [aside-start] 55px [content-column-start] 1fr [content-column-end];
+    grid-template-rows: [header-start] 55px [header-end content-row-start] 1fr [content-row-end];
+    width: 100vw;
+    height: calc(100vh - 56px);
+  }
 }

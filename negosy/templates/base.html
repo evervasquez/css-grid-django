@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>{% block title %}Negosy{% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="{% static "css/negosy.css" %}"/>
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
@@ -15,10 +16,11 @@
                 Inventario
             </div>
             <div class="nav-actions">
-                <div class="nav-main-item nav-search">
-                    <input class="input is-rounded search-platform" type="text" placeholder="Buscar en negosy...">
+                <div class="nav-main-item nav-search ">
+                    <input class="input is-rounded search-platform is-hidden-mobile"
+                           type="text" placeholder="Buscar en negosy...">
                 </div>
-                <div class="nav-main-item nav-config">
+                <div class="nav-main-item nav-config is-hidden-mobile">
                     <button class="button is-success has-text-weight-bold">Guía de
                         configuración
                     </button>
@@ -37,12 +39,12 @@
                     </span>
                     </a>
                 </div>
-                <div class="nav-main-item nav-profile navbar" role="navigation" aria-label="dropdown navigation">
-                    <div class="navbar-item has-dropdown is-mobile is-hoverable">
+                <div class="nav-main-item nav-profile is-hidden-mobile" role="navigation"
+                     aria-label="dropdown navigation">
+                    <div class="navbar-item has-dropdown is-hoverable">
                         <a class="navbar-link">
                             Ever Vásquez
                         </a>
-
                         <div class="navbar-dropdown">
                             <a class="navbar-item">
                                 Mi cuenta
@@ -112,7 +114,7 @@
             </div>
         </div>
     </aside>
-    <div class="sub-nav">
+    <div class="sub-nav is-hidden-mobile">
         <div class="nav-item-empty"></div>
         <div class="sub-nav-item active-sub">Productos</div>
         <div class="sub-nav-item">Variantes</div>
@@ -124,11 +126,9 @@
         <div class="grid">
             <div class="grid-actions">
                 <div class="actions-item search">
-                    <div class="control">
-                        <input class="input" type="text" placeholder="Buscar producto">
-                    </div>
+                    <input class="input" type="text" placeholder="Buscar producto">
                 </div>
-                <div class="actions-item btn-inventory">
+                <div class="actions-item btn-inventory is-hidden-mobile">
                     <div class="dropdown">
                         <div class="dropdown-trigger">
                             <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
@@ -169,7 +169,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="actions-item btn-category">
+                <div class="actions-item btn-category is-hidden-mobile">
                     <div class="dropdown">
                         <div class="dropdown-trigger">
                             <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
@@ -252,11 +252,13 @@
                     </div>
                 </div>
                 <div class="actions-item new-btn">
-                    <button class="button is-info">Nuevo Producto</button>
+                    <button class="button is-info" title="Nuevo producto"><i class="fas fa-plus-circle"></i>
+                        &nbsp;Nuevo Producto
+                    </button>
                 </div>
             </div>
             <div class="grid-content">
-                <table class="table is-hoverable is-fullwidth">
+                <table class="table">
                     <thead>
                     <tr>
                         <th>
@@ -265,9 +267,9 @@
                             </label>
                         </th>
                         <th>Producto</th>
-                        <th>Categoría</th>
-                        <th class="has-text-right">Precio de venta</th>
-                        <th class="has-text-right">Precio de compra</th>
+                        <th class="is-hidden-mobile">Categoría</th>
+                        <th class="has-text-right is-hidden-mobile">Precio de venta</th>
+                        <th class="has-text-right is-hidden-mobile">Precio de compra</th>
                         <th class="has-text-right">Stock</th>
                     </tr>
                     </thead>
@@ -278,14 +280,15 @@
                                 <input type="checkbox">
                             </label>
                         </th>
-                        <td style="width: 45%">
+                        <td >
                             <a href="https://en.wikipedia.org/wiki/Leicester_City_F.C."
                                title="JOLLY LOGAN OVEJA VESTIDA DE LOBO 25 CM SENTADA">JOLLY LOGAN OVEJA VESTIDA DE LOBO
                                 25 CM SENTADA</a>
+                            <div class="price-sale-mobile is-hidden-tablet">Precio venta: S/ 45.00</div>
                         </td>
-                        <td></td>
-                        <td class="has-text-right">S/ 45.00</td>
-                        <td class="has-text-right">S/ 00.00</td>
+                        <td class="is-hidden-mobile"></td>
+                        <td class="has-text-right is-hidden-mobile">S/ 45.00</td>
+                        <td class="has-text-right is-hidden-mobile">S/ 00.00</td>
                         <td class="has-text-right">00.00</td>
                     </tr>
                     <tr>
@@ -296,10 +299,11 @@
                         </th>
                         <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C."
                                title="PAR DE MEDIAS 50256">PAR DE MEDIAS 50256</a>
+                            <div class="price-sale-mobile is-hidden-tablet">Precio venta: S/ 12.00</div>
                         </td>
-                        <td></td>
-                        <td class="has-text-right">S/ 12.00</td>
-                        <td class="has-text-right">S/ 00.00</td>
+                        <td class="is-hidden-mobile"></td>
+                        <td class="has-text-right is-hidden-mobile">S/ 12.00</td>
+                        <td class="has-text-right is-hidden-mobile">S/ 00.00</td>
                         <td class="has-text-right">00.00</td>
                     </tr>
                     <tr>
@@ -311,10 +315,11 @@
                         <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C."
                                title="TAZA CON PLATA DE MADERA Y CUCHARA AMOR - 50148">TAZA CON PLATA DE MADERA Y
                             CUCHARA AMOR - 50148</a>
+                            <div class="price-sale-mobile is-hidden-tablet">Precio venta: S/ 19.00</div>
                         </td>
-                        <td></td>
-                        <td class="has-text-right">S/ 19.00</td>
-                        <td class="has-text-right">S/ 00.00</td>
+                        <td class="is-hidden-mobile"></td>
+                        <td class="has-text-right is-hidden-mobile">S/ 19.00</td>
+                        <td class="has-text-right is-hidden-mobile">S/ 00.00</td>
                         <td class="has-text-right">12.00</td>
                     </tr>
                     <tr>
@@ -325,10 +330,11 @@
                         </th>
                         <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C."
                                title="FUNKO POP 20 DEADPOOL">FUNKO POP 20 DEADPOOL</a>
+                            <div class="price-sale-mobile is-hidden-tablet">Precio venta: S/ 65.00</div>
                         </td>
-                        <td></td>
-                        <td class="has-text-right">S/ 65.00</td>
-                        <td class="has-text-right">S/ 00.00</td>
+                        <td class="is-hidden-mobile"></td>
+                        <td class="has-text-right is-hidden-mobile">S/ 65.00</td>
+                        <td class="has-text-right is-hidden-mobile">S/ 00.00</td>
                         <td class="has-text-right">00.00</td>
                     </tr>
                     <tr>
@@ -339,10 +345,11 @@
                         </th>
                         <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C."
                                title="PULSERA NEGRA GEO 18237">PULSERA NEGRA GEO 18237</a>
+                            <div class="price-sale-mobile is-hidden-tablet">Precio venta: S/ 17.00</div>
                         </td>
-                        <td></td>
-                        <td class="has-text-right">S/ 17.00</td>
-                        <td class="has-text-right">S/ 00.00</td>
+                        <td class="is-hidden-mobile"></td>
+                        <td class="has-text-right is-hidden-mobile">S/ 17.00</td>
+                        <td class="has-text-right is-hidden-mobile">S/ 00.00</td>
                         <td class="has-text-right">00.00</td>
                     </tr>
                     <tr>
@@ -353,10 +360,11 @@
                         </th>
                         <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C."
                                title="LLAVERO BTS METAL 50250">LLAVERO BTS METAL 50250</a>
+                            <div class="price-sale-mobile is-hidden-tablet">Precio venta: S/ 10.00</div>
                         </td>
-                        <td></td>
-                        <td class="has-text-right">S/ 10.00</td>
-                        <td class="has-text-right">S/ 00.00</td>
+                        <td class="is-hidden-mobile"></td>
+                        <td class="has-text-right is-hidden-mobile">S/ 10.00</td>
+                        <td class="has-text-right is-hidden-mobile">S/ 00.00</td>
                         <td class="has-text-right">00.00</td>
                     </tr>
                     <tr>
@@ -367,10 +375,11 @@
                         </th>
                         <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C."
                                title="CAJA ARMABLE NAVIDEÑA">CAJA ARMABLE NAVIDEÑA</a>
+                            <div class="price-sale-mobile is-hidden-tablet">Precio venta: S/ 4.00</div>
                         </td>
-                        <td></td>
-                        <td class="has-text-right">S/ 4.00</td>
-                        <td class="has-text-right">S/ 00.00</td>
+                        <td class="is-hidden-mobile"></td>
+                        <td class="has-text-right is-hidden-mobile">S/ 4.00</td>
+                        <td class="has-text-right is-hidden-mobile">S/ 00.00</td>
                         <td class="has-text-right">00.00</td>
                     </tr>
                     <tr>
@@ -381,10 +390,11 @@
                         </th>
                         <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C."
                                title="GRANUTS ARANDANOS">GRANUTS ARANDANOS</a>
+                            <div class="price-sale-mobile is-hidden-tablet">Precio venta: S/ 4.50</div>
                         </td>
-                        <td></td>
-                        <td class="has-text-right">S/ 4.50</td>
-                        <td class="has-text-right">S/ 00.00</td>
+                        <td class="is-hidden-mobile"></td>
+                        <td class="has-text-right is-hidden-mobile">S/ 4.50</td>
+                        <td class="has-text-right is-hidden-mobile">S/ 00.00</td>
                         <td class="has-text-right">00.00</td>
                     </tr>
                     <tr>
@@ -395,10 +405,11 @@
                         </th>
                         <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C."
                                title="BOLA NAVIDEÑA">BOLA NAVIDEÑA</a>
+                            <div class="price-sale-mobile is-hidden-tablet">Precio venta: S/ 5.00</div>
                         </td>
-                        <td></td>
-                        <td class="has-text-right">S/ 5.00</td>
-                        <td class="has-text-right">S/ 00.00</td>
+                        <td class="is-hidden-mobile"></td>
+                        <td class="has-text-right is-hidden-mobile">S/ 5.00</td>
+                        <td class="has-text-right is-hidden-mobile">S/ 00.00</td>
                         <td class="has-text-right">00.00</td>
                     </tr>
                     <tr>
@@ -409,10 +420,11 @@
                         </th>
                         <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C."
                                title="MINI OREO GALLETA">MINI OREO GALLETA</a>
+                            <div class="price-sale-mobile is-hidden-tablet">Precio venta: S/ 2.00</div>
                         </td>
-                        <td></td>
-                        <td class="has-text-right">S/ 2.00</td>
-                        <td class="has-text-right">S/ 00.00</td>
+                        <td class="is-hidden-mobile"></td>
+                        <td class="has-text-right is-hidden-mobile">S/ 2.00</td>
+                        <td class="has-text-right is-hidden-mobile">S/ 00.00</td>
                         <td class="has-text-right">00.00</td>
                     </tr>
                     <tr>
@@ -424,11 +436,12 @@
                         <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C."
                                title="PORTAFOTO LUNAMÍA CUMPLEAÑOS MODELOS VARIOS">PORTAFOTO LUNAMÍA CUMPLEAÑOS MODELOS
                             VARIOS</a>
+                            <div class="price-sale-mobile is-hidden-tablet">Precio venta: S/ 38.00</div>
                         </td>
-                        <td></td>
-                        <td class="has-text-right" style="width: 15%">S/ 38.00</td>
-                        <td class="has-text-right" style="width: 15%">S/ 00.00</td>
-                        <td class="has-text-right" style="width: 10%">00.00</td>
+                        <td class="is-hidden-mobile"></td>
+                        <td class="has-text-right is-hidden-mobile" >S/ 38.00</td>
+                        <td class="has-text-right is-hidden-mobile">S/ 00.00</td>
+                        <td class="has-text-right">00.00</td>
                     </tr>
                     <tr>
                         <th>
@@ -438,10 +451,11 @@
                         </th>
                         <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C."
                                title="TAZA HAPPY BIRTHDAY OSA - LUNA MIA">TAZA HAPPY BIRTHDAY OSA - LUNA MIA</a>
+                            <div class="price-sale-mobile is-hidden-tablet">Precio venta: S/ 25.00</div>
                         </td>
-                        <td></td>
-                        <td class="has-text-right">S/ 25.00</td>
-                        <td class="has-text-right">S/ 00.00</td>
+                        <td class="is-hidden-mobile"></td>
+                        <td class="has-text-right is-hidden-mobile">S/ 25.00</td>
+                        <td class="has-text-right is-hidden-mobile">S/ 00.00</td>
                         <td class="has-text-right">00.00</td>
                     </tr>
                     <tr>
@@ -452,10 +466,11 @@
                         </th>
                         <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C."
                                title="TOFFEES DE CHOCOLATE">TOFFEES DE CHOCOLATE</a>
+                            <div class="price-sale-mobile is-hidden-tablet">Precio venta: S/ 13.00</div>
                         </td>
-                        <td></td>
-                        <td class="has-text-right">S/ 13.00</td>
-                        <td class="has-text-right">S/ 00.00</td>
+                        <td class="is-hidden-mobile"></td>
+                        <td class="has-text-right is-hidden-mobile">S/ 13.00</td>
+                        <td class="has-text-right is-hidden-mobile">S/ 00.00</td>
                         <td class="has-text-right">00.00</td>
                     </tr>
                     <tr>
@@ -466,10 +481,11 @@
                         </th>
                         <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C."
                                title="TOFFEES DE CHOCOLATE">TOFFEES DE CHOCOLATE</a>
+                            <div class="price-sale-mobile is-hidden-tablet">Precio venta: S/ 13.00</div>
                         </td>
-                        <td></td>
-                        <td class="has-text-right">S/ 13.00</td>
-                        <td class="has-text-right">S/ 00.00</td>
+                        <td class="is-hidden-mobile"></td>
+                        <td class="has-text-right is-hidden-mobile">S/ 13.00</td>
+                        <td class="has-text-right is-hidden-mobile">S/ 00.00</td>
                         <td class="has-text-right">00.00</td>
                     </tr>
                     </tbody>
