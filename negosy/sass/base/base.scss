@@ -21,8 +21,7 @@ main {
   grid-template-columns: [aside-start] 55px [aside-end sub-nav-start] 180px [sub-nav-end content-column-start] 1fr [content-column-end];
   grid-template-rows: [header-start] 55px [header-end content-row-start] 1fr [content-row-end];
   width: 100vw;
-  height: calc(100vh - 56px);
-  //height: 100vh;
+  height: 100vh;
 }
 
 header {
