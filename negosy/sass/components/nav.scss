@@ -15,13 +15,10 @@
 
 .nav-actions {
   display: flex;
-  //flex-direction: row;
-  //justify-content: flex-end;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 
-//.nav-main-item{
-//  margin: 0 5px;
-//}
 .nav-profile {
 }
 
@@ -34,10 +31,11 @@
 .nav-config {
 }
 
-
+.nav-main-item{
+  padding: 0 5px;
+}
 .nav-search {
-  //flex: 0 1 40%;
-  min-width: 150px;
+  flex: 0 1 40%;
 }
 
 .search-platform:focus {
@@ -76,12 +74,10 @@
       height: 2px;
       margin: 0.5rem 0;
     }
-
   }
 }
 
 @media (min-width: 481px) and (max-width: 767px) {
-
 
 
 }

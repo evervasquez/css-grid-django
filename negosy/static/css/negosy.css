@@ -9457,10 +9457,16 @@ aside {
 
 .nav-actions {
   display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.nav-main-item {
+  padding: 0 5px;
 }
 
 .nav-search {
-  min-width: 150px;
+  flex: 0 1 40%;
 }
 
 .search-platform:focus {
@@ -9645,6 +9651,21 @@ aside {
   .grid-actions {
     display: flex;
     justify-content: space-between;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1215px) {
+  .search {
+    flex: 0 1 42%;
+  }
+}
+@media (min-width: 1216px) and (max-width: 1407px) {
+  .search {
+    flex: 0 1 42%;
+  }
+}
+@media (min-width: 1408px) and (max-width: 1999px) {
+  .search {
+    flex: 0 1 50%;
   }
 }
 .table {
