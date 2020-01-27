@@ -48,7 +48,7 @@
   margin-bottom: 20px;
 }
 
-@media (min-width: 481px) and (max-width: 767px) {
+@media (min-width: 481px) and (max-width: 768px) {
   .grid {
     display: grid;
     padding: 10px;
@@ -97,13 +97,21 @@
 
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 320px) and (max-width: 480px) {
 
 }
 
-@media (min-width: 1025px) and (max-width: 1215px) {
+@media (min-width: 481px) and (max-width: 768px) {
+
+}
+
+@media (min-width: 769px) and (max-width: 1023px) {
+
+}
+
+@media (min-width: 1024px) and (max-width: 1215px) {
   .search {
-    flex: 0 1 42%;
+    flex: 0 1 38%;
   }
 }
 

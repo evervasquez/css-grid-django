@@ -15,12 +15,12 @@
             <div class="nav-title">
                 Inventario
             </div>
-            <div class="nav-actions">
+            <div class="nav-actions is-hidden-mobile">
                 <div class="nav-main-item nav-search ">
-                    <input class="input is-rounded search-platform is-hidden-mobile"
+                    <input class="input is-rounded search-platform"
                            type="text" placeholder="Buscar en negosy...">
                 </div>
-                <div class="nav-main-item nav-config is-hidden-mobile">
+                <div class="nav-main-item nav-config">
                     <button class="button is-success has-text-weight-bold">Guía de
                         configuración
                     </button>
@@ -39,7 +39,7 @@
                     </span>
                     </a>
                 </div>
-                <div class="nav-main-item nav-profile is-hidden-mobile" role="navigation"
+                <div class="nav-main-item nav-profile" role="navigation"
                      aria-label="dropdown navigation">
                     <div class="navbar-item has-dropdown is-hoverable">
                         <a class="navbar-link">
@@ -56,6 +56,34 @@
                             <div class="navbar-item">
                                 Cerrar sesión
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-actions sub-nav-mobil is-hidden-desktop">
+                <div class="dropdown">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
+                            <span>Productos</span>
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+                        <div class="dropdown-content">
+                            <a href="#" class="dropdown-item">
+                                Variantes
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                Categorías
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                Descuentos
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                Lista de precios
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -114,7 +142,7 @@
             </div>
         </div>
     </aside>
-    <div class="sub-nav is-hidden-mobile">
+    <div class="sub-nav is-hidden-touch">
         <div class="nav-item-empty"></div>
         <div class="sub-nav-item active-sub">Productos</div>
         <div class="sub-nav-item">Variantes</div>
@@ -129,83 +157,28 @@
                     <input class="input" type="text" placeholder="Buscar producto">
                 </div>
                 <div class="actions-item btn-inventory is-hidden-mobile">
-                    <div class="dropdown">
-                        <div class="dropdown-trigger">
-                            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
-                                <span>Todo el inventario</span>
-                                <span class="icon is-small">
-                                    <i class="fas fa-angle-down" aria-hidden="true"></i>
-                                </span>
-                            </button>
-                        </div>
-                        <div class="dropdown-menu" id="dropdown-menu3" role="menu">
-                            <div class="dropdown-content">
-                                <a href="#" class="dropdown-item">
-                                    Overview
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    Modifiers
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    Grid
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    Form
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    Elements
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    Components
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    Layout
-                                </a>
-                                <hr class="dropdown-divider">
-                                <a href="#" class="dropdown-item">
-                                    More
-                                </a>
+                    <div class="field">
+                        <div class="control">
+                            <div class="select is-fullwidth">
+                                <select>
+                                    <option>Todo el inventario</option>
+                                    <option>Con inventario</option>
+                                    <option>Sin stock</option>
+                                </select>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="actions-item btn-category is-hidden-mobile">
-                    <div class="dropdown">
-                        <div class="dropdown-trigger">
-                            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
-                                <span>Todas las categorías</span>
-                                <span class="icon is-small">
-                                        <i class="fas fa-angle-down" aria-hidden="true"></i>
-                                    </span>
-                            </button>
-                        </div>
-                        <div class="dropdown-menu" id="dropdown-menu3" role="menu">
-                            <div class="dropdown-content">
-                                <a href="#" class="dropdown-item">
-                                    Overview
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    Modifiers
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    Grid
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    Form
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    Elements
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    Components
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    Layout
-                                </a>
-                                <hr class="dropdown-divider">
-                                <a href="#" class="dropdown-item">
-                                    More
-                                </a>
+                    <div class="field">
+                        <div class="control">
+                            <div class="select is-fullwidth">
+                                <select>
+                                    <option>Todas las categorías</option>
+                                    <option>Polos</option>
+                                    <option>Blusas</option>
+                                    <option>Ropa de ninios</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -223,30 +196,16 @@
                         <div class="dropdown-menu" id="dropdown-menu3" role="menu">
                             <div class="dropdown-content">
                                 <a href="#" class="dropdown-item">
-                                    Overview
+                                    Exportar
                                 </a>
                                 <a href="#" class="dropdown-item">
-                                    Modifiers
+                                    Importar
                                 </a>
-                                <a href="#" class="dropdown-item">
-                                    Grid
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    Form
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    Elements
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    Components
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    Layout
-                                </a>
+                                <!--
                                 <hr class="dropdown-divider">
                                 <a href="#" class="dropdown-item">
                                     More
-                                </a>
+                                </a>-->
                             </div>
                         </div>
                     </div>
@@ -516,5 +475,32 @@
     </div>
 
 </main>
+<script>
+
+
+    function getAll(selector) {
+        return Array.prototype.slice.call(document.querySelectorAll(selector), 0);
+    }
+
+    var $dropdowns = getAll('.dropdown:not(.is-hoverable)');
+    if ($dropdowns.length > 0) {
+        $dropdowns.forEach(function ($el) {
+            $el.addEventListener('click', function (event) {
+                event.stopPropagation();
+                $el.classList.toggle('is-active');
+            });
+        });
+
+        document.addEventListener('click', function (event) {
+            closeDropdowns();
+        });
+
+        function closeDropdowns() {
+            $dropdowns.forEach(function ($el) {
+                $el.classList.remove('is-active');
+            });
+        }
+    }
+</script>
 </body>
 </html>

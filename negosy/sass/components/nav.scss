@@ -31,9 +31,10 @@
 .nav-config {
 }
 
-.nav-main-item{
+.nav-main-item {
   padding: 0 5px;
 }
+
 .nav-search {
   flex: 0 1 40%;
 }
@@ -44,7 +45,7 @@
   box-shadow: none;
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1023px) {
   .navbar-dropdown {
     display: none;
   }
@@ -77,7 +78,24 @@
   }
 }
 
-@media (min-width: 481px) and (max-width: 767px) {
+@media (min-width: 320px) and (max-width: 480px) {
+  .nav-main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .sub-nav-mobil {
+    padding-right: 20px;
 
-
+    //.dropdown {
+    //  .dropdown-trigger {
+    //    button {
+    //      border: none;
+    //      span{
+    //        font-size: 16px !important;
+    //      }
+    //    }
+    //  }
+    //}
+  }
 }

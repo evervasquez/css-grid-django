@@ -44,24 +44,22 @@ aside {
 }
 
 
-@media (min-width: 481px) and (max-width: 767px) {
-  main {
-    display: grid;
-    grid-template-columns: [aside-start] 55px [content-column-start] 1fr [content-column-end];
-    grid-template-rows: [header-start] 55px [header-end content-row-start] calc(100vh - 55px) [content-row-end];
-    height: 100vh;
-  }
-
-}
-
-
 @media (min-width: 320px) and (max-width: 480px) {
-
   main {
     display: grid;
     grid-template-columns: [aside-start] 55px [content-column-start] 1fr [content-column-end];
     grid-template-rows: [header-start] 55px [header-end content-row-start] 1fr [content-row-end];
     width: 100vw;
     height: calc(100vh - 56px);
+  }
+}
+
+@media (max-device-width: 800px) and (orientation: portrait) {
+  main {
+    display: grid;
+    grid-template-columns: [aside-start] 55px [content-column-start] 1fr [content-column-end];
+    grid-template-rows: [header-start] 55px [header-end content-row-start] 1fr [content-row-end];
+    height: 100vh;
+    width: 100vw;
   }
 }
