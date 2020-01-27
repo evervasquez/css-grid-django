@@ -13,14 +13,15 @@
   font-size: 1.4em !important;
 }
 
-//.nav-main-item{
-//  padding: 0 5px;
-//}
-
 .nav-actions {
   display: flex;
+  //flex-direction: row;
+  //justify-content: flex-end;
 }
 
+//.nav-main-item{
+//  margin: 0 5px;
+//}
 .nav-profile {
 }
 
@@ -35,7 +36,7 @@
 
 
 .nav-search {
-  flex: 1;
+  //flex: 0 1 40%;
   min-width: 150px;
 }
 

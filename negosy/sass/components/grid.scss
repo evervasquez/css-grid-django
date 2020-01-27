@@ -10,19 +10,22 @@
   margin: 0 auto;
 }
 
+.search {
+    flex: 0 1 40%;
+    padding-bottom: 10px;
+  }
+
 .grid-actions {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .grid-paginator {
   display: block;
   margin-bottom: auto;
   margin-top: auto;
-}
-
-.search {
-  //min-width: 375px;
 }
 
 .actions-item {
@@ -67,7 +70,6 @@
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
-
   .grid {
     display: grid;
     padding: 10px;
